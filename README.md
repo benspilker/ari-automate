@@ -10,7 +10,7 @@ It is designed to be run **directly in Azure Cloud Shell**.
 1. Open **Azure Cloud Shell** in your tenant and ensure that it is in powershell
 2. Copy and paste the contents of the script to run it or run this command.
     ```powershell
-    git clone https://github.com/benspilker/ari-automate.git
+    git clone https://github.com/benspilker/ari-automate.git && cd ari-automate
     ```
 
 ## NOTE 
