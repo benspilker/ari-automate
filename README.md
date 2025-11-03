@@ -1,5 +1,6 @@
 # Azure Resource Inventory (Cloud Shell Script)
 
+The **Azure Resource Inventory (Cloud Shell Script)** PowerShell script automates the process of running [`Invoke-ARI`](https://www.powershellgallery.com/packages/AzureResourceInventory/)
 This PowerShell script collects enabled subscriptions in your tenant and runs **Azure Resource Inventory (ARI)** for up to 8 subscriptions. 
 It is designed to be run **directly in Azure Cloud Shell**.
 
