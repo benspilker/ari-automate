@@ -13,7 +13,7 @@ It is designed to be run **directly in Azure Cloud Shell**.
 ## NOTE 
 You will get the following error when running due to a cloud shell limitation 
 
-    "WARNING: ImportExcel Module Cannot Autosize. Please run the following command to install dependencies: apt-get -y update && apt-get install -y --no-install-recommends libgdiplus libc6-dev"
+WARNING: ImportExcel Module Cannot Autosize. Please run the following command to install dependencies: apt-get -y update && apt-get install -y --no-install-recommends libgdiplus libc6-dev
 
 This is normal. The excel file won't have perfect formatting and auto-fitting because of this limitation, but will still get the job done enough. It does look much better when running Invoke-ARI on your local machine but this is not possible with CSP customers.
 
