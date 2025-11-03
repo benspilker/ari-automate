@@ -43,33 +43,33 @@ if ($omittedSubs.Count -gt 0) {
     Write-Host "`nNo non-production subscriptions found to omit." -ForegroundColor Green
 }
 
-# Determine which subscriptions to use
+# Determine which subscriptions to lookup
 if ($totalCount -le 8) {
     Write-Host "`n8 or fewer subscriptions detected — including prod and non-prod in report." -ForegroundColor Cyan
-    $subsToUse = $subs
+    $subsToLookup = $subs
 } else {
     Write-Host "`nMore than 8 subscriptions detected — omitting non-prod and limiting to first 8 prod subs." -ForegroundColor Cyan
 
     if ($prodSubs.Count -eq 0) {
         Write-Warning "No production subscriptions found! Defaulting to first 8 overall."
-        $subsToUse = $subs[0..7]
+        $subsToLookup = $subs[0..7]
     } elseif ($prodSubs.Count -le 8) {
-        $subsToUse = $prodSubs
+        $subsToLookup = $prodSubs
     } else {
-        $subsToUse = $prodSubs[0..7]
+        $subsToLookup = $prodSubs[0..7]
     }
 }
 
 # Build and save subscriptions.txt
 $arrayLines = @('$ids = @(')
-foreach ($sub in $subsToUse) {
+foreach ($sub in $subsToLookup) {
     $arrayLines += "    '$($sub.ID)' # $($sub.Name)"
 }
 $arrayLines += ')'
 $arrayLines | Out-File -FilePath "$HOME/subscriptions.txt" -Encoding utf8
 
 # Extract IDs for Invoke-ARI
-$idsToUse = $subsToUse.ID
+$idsToUse = $subsToLookup.ID
 
 Invoke-ARI -SubscriptionID $idsToUse -IncludeTags
 
