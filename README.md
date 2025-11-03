@@ -8,7 +8,10 @@ It is designed to be run **directly in Azure Cloud Shell**.
 ## Quick Start
 
 1. Open **Azure Cloud Shell** in your tenant and ensure that it is in powershell
-2. Copy and paste the contents of the script to run it.
+2. Copy and paste the contents of the script to run it or run this command.
+    ```powershell
+    git clone https://github.com/benspilker/ari-automate.git
+    ```
 
 ## NOTE 
 You will get the following error when running due to a cloud shell limitation 
@@ -22,10 +25,7 @@ This is normal. The excel file won't have perfect formatting and auto-fitting be
 ## Usage
 
 1. Open **Azure Cloud Shell** in your tenant.
-2. Copy the script into the shell or run this command
-    ```powershell
-    git clone https://github.com/benspilker/ari-automate.git
-    ```
+2. Copy the script into the shell or run the git clone command in Quick Start.
 3. There are 2 versions of the script to run. The simplified version is ARI-powershell-csp.ps1 and the more advanced version is ARI-powershell-csp-prod-nonprod.ps1.
     ```powershell
     .\ARI-powershell-csp.ps1
