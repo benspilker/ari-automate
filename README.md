@@ -37,4 +37,4 @@ For larger customers who have more than 8 subscriptions, consider using ARI-powe
 7. Download files from cloud shell to your local computer. Manage Files, Download a File, Enter the path.
     For example /home/user
 
-AzureResourceInventory/AzureResourceInventory_Report_2025-11-02_03_10.xlsx
+	AzureResourceInventory/AzureResourceInventory_Report_2025-11-02_03_10.xlsx
