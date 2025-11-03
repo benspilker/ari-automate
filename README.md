@@ -32,5 +32,5 @@ For larger customers who have more than 8 subscriptions, consider using ARI-powe
 5. Check the `$HOME/subscriptions.txt` file for the formatted subscription list.
 6. Inventory data will be collected automatically via `Invoke-ARI`.
 7. Download files to your local computer. Manage Files, Download a File, Enter the path
-    For example /home/presidio
+    For example /home/user
     AzureResourceInventory/AzureResourceInventory_Report_2025-11-02_03_10.xlsx
