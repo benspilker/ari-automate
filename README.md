@@ -12,7 +12,6 @@ It is designed to be run **directly in Azure Cloud Shell**.
     ```powershell
     git clone https://github.com/benspilker/ari-automate.git
     ```
-
 ## NOTE 
 You will get the following error when running due to a cloud shell limitation 
 
