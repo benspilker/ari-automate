@@ -37,8 +37,8 @@ if ($omittedSubs.Count -gt 0) {
         $omittedLines += "    '$($sub.ID)' # $($sub.Name)"
     }
     $omittedLines += ')'
-    $omittedLines | Out-File -FilePath "$HOME/omitted-subscriptions.txt" -Encoding utf8
-    Write-Host "`nOmitted non-production subscriptions saved to: $HOME/omitted-subscriptions.txt" -ForegroundColor Yellow
+    $omittedLines | Out-File -FilePath "$HOME/AzureResourceInventory/omitted-subscriptions.txt" -Encoding utf8
+    Write-Host "`nOmitted non-production subscriptions saved to: $HOME/AzureResourceInventory/omitted-subscriptions.txt" -ForegroundColor Yellow
 } else {
     Write-Host "`nNo non-production subscriptions found to omit." -ForegroundColor Green
 }
@@ -66,14 +66,14 @@ foreach ($sub in $subsToLookup) {
     $arrayLines += "    '$($sub.ID)' # $($sub.Name)"
 }
 $arrayLines += ')'
-$arrayLines | Out-File -FilePath "$HOME/subscriptions.txt" -Encoding utf8
+$arrayLines | Out-File -FilePath "$HOME/AzureResourceInventory/subscriptions.txt" -Encoding utf8
 
 # Extract IDs for Invoke-ARI
 $idsToUse = $subsToLookup.ID
 
 Invoke-ARI -SubscriptionID $idsToUse -IncludeTags
 
-Write-Host "`nSubscription list saved to: $HOME/subscriptions.txt"
+Write-Host "`nSubscription list saved to: $HOME/AzureResourceInventory/subscriptions.txt"
 if ($omittedSubs.Count -gt 0) {
-    Write-Host "Omitted subscriptions saved to: $HOME/omitted-subscriptions.txt"
+    Write-Host "Omitted subscriptions saved to: $HOME/AzureResourceInventory/omitted-subscriptions.txt"
 }

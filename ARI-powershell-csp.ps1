@@ -14,7 +14,7 @@ foreach ($sub in $subs) {
 }
 $arrayLines += ')'
 
-$arrayLines | Out-File -FilePath $HOME/subscriptions.txt -Encoding utf8
+$arrayLines | Out-File -FilePath $HOME/AzureResourceInventory/subscriptions.txt -Encoding utf8
 
 # Limit to 8 subscriptions if needed
 if ($ids.Count -gt 8) {
@@ -26,4 +26,4 @@ if ($ids.Count -gt 8) {
 
 Invoke-ARI -SubscriptionID $idsToUse -IncludeTags
 
-Write-Host "Subscription list saved to: $HOME/subscriptions.txt"
+Write-Host "Subscription list saved to: $HOME/AzureResourceInventory/subscriptions.txt"

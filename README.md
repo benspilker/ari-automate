@@ -33,9 +33,9 @@ This is normal. The excel file won't have perfect formatting and auto-fitting be
     ```
 4. Note, the script can only query up to 8 subscriptions at a time, otherwise Invoke-ARI crashes in the cloud shell. ARI-powershell-csp.ps1 will only query the first 8 subcriptions listed. 
 For larger customers who have more than 8 subscriptions, consider using ARI-powershell-csp-prod-nonprod.ps1 which currently filters out non-prod subcriptions and only queries prod.
-5. Check the `$HOME/subscriptions.txt` file for the formatted subscription list.
+5. Check the `$HOME/AzureResourceInventory/subscriptions.txt` file for the formatted subscription list.
 6. Inventory data will be collected automatically via `Invoke-ARI`.
 7. Download files from cloud shell to your local computer. Manage Files, Download a File, Enter the path.
-    For example /home/user
+    For example /home/user/
 
 	AzureResourceInventory/AzureResourceInventory_Report_2025-11-02_03_10.xlsx
