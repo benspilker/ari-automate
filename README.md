@@ -22,7 +22,10 @@ This is normal. The excel file won't have perfect formatting and auto-fitting be
 ## Usage
 
 1. Open **Azure Cloud Shell** in your tenant.
-2. Copy the script into the shell or upload it as a `.ps1` file.
+2. Copy the script into the shell or run this command
+    ```powershell
+    git clone https://github.com/benspilker/ari-automate.git
+    ```
 3. There are 2 versions of the script to run. The simplified version is ARI-powershell-csp.ps1 and the more advanced version is ARI-powershell-csp-prod-nonprod.ps1.
     ```powershell
     .\ARI-powershell-csp.ps1
