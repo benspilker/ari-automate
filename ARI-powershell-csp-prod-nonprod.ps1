@@ -2,7 +2,17 @@ cls
 Install-Module -Name AzureResourceInventory -Force
 Import-Module AzureResourceInventory
 
+# Define output folder
+$ariFolder = Join-Path $HOME "AzureResourceInventory"
+
+# Ensure the folder exists
+if (-not (Test-Path $ariFolder)) {
+    Write-Host "Creating folder: $ariFolder"
+    New-Item -Path $ariFolder -ItemType Directory | Out-Null
+}
+
 # Get enabled subscriptions and build array
+Write-Host "Retrieving enabled subscriptions..."
 $subs = az account list --all --query "[?state=='Enabled'].{Name:name, ID:id}" -o json | ConvertFrom-Json
 
 # Define non-production keywords (case-insensitive)
@@ -37,8 +47,10 @@ if ($omittedSubs.Count -gt 0) {
         $omittedLines += "    '$($sub.ID)' # $($sub.Name)"
     }
     $omittedLines += ')'
-    $omittedLines | Out-File -FilePath "$HOME/AzureResourceInventory/omitted-subscriptions.txt" -Encoding utf8
-    Write-Host "`nOmitted non-production subscriptions saved to: $HOME/AzureResourceInventory/omitted-subscriptions.txt" -ForegroundColor Yellow
+
+    $omittedFile = Join-Path $ariFolder "omitted-subscriptions.txt"
+    $omittedLines | Out-File -FilePath $omittedFile -Encoding utf8
+    Write-Host "`nOmitted non-production subscriptions saved to: $omittedFile" -ForegroundColor Yellow
 } else {
     Write-Host "`nNo non-production subscriptions found to omit." -ForegroundColor Green
 }
@@ -66,14 +78,31 @@ foreach ($sub in $subsToLookup) {
     $arrayLines += "    '$($sub.ID)' # $($sub.Name)"
 }
 $arrayLines += ')'
-$arrayLines | Out-File -FilePath "$HOME/AzureResourceInventory/subscriptions.txt" -Encoding utf8
+
+$subsFile = Join-Path $ariFolder "subscriptions.txt"
+$arrayLines | Out-File -FilePath $subsFile -Encoding utf8
+
+# Display the subscriptions that will be used
+Write-Host "`nSubscriptions included in the ARI run:" -ForegroundColor Cyan
+foreach ($sub in $subsToLookup) {
+    Write-Host (" - " + $sub.ID + "  [" + $sub.Name + "]")
+}
+Write-Host ""
+
+# Change directory to the folder
+Set-Location -Path $ariFolder
+Write-Host "Changed directory to: $(Get-Location)" -ForegroundColor Yellow
+Write-Host ""
 
 # Extract IDs for Invoke-ARI
 $idsToUse = $subsToLookup.ID
 
+# Run Azure Resource Inventory
+Write-Host "Running Azure Resource Inventory..." -ForegroundColor Cyan
 Invoke-ARI -SubscriptionID $idsToUse -IncludeTags
 
-Write-Host "`nSubscription list saved to: $HOME/AzureResourceInventory/subscriptions.txt"
+# Summary output
+Write-Host "`nSubscription list saved to: $subsFile" -ForegroundColor Green
 if ($omittedSubs.Count -gt 0) {
-    Write-Host "Omitted subscriptions saved to: $HOME/AzureResourceInventory/omitted-subscriptions.txt"
+    Write-Host "Omitted subscriptions saved to: $omittedFile" -ForegroundColor Yellow
 }
