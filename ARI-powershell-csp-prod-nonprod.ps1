@@ -1,4 +1,5 @@
 cls
+Write-Host "Installing AzureResourceInventory Powershell Module"
 Install-Module -Name AzureResourceInventory -Force
 Import-Module AzureResourceInventory
 
