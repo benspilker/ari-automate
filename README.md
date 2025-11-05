@@ -31,6 +31,10 @@ This is normal. The excel file won't have perfect formatting and auto-fitting be
     ```powershell
     .\ARI-powershell-csp.ps1
     ```
+	or
+    ```powershell
+    .\ARI-powershell-csp-prod-nonprod.ps1
+    ```	
 4. Note, the script can only query up to 8 subscriptions at a time, otherwise Invoke-ARI crashes in the cloud shell. ARI-powershell-csp.ps1 will only query the first 8 subcriptions listed. 
 For larger customers who have more than 8 subscriptions, consider using ARI-powershell-csp-prod-nonprod.ps1 which currently filters out non-prod subcriptions and only queries prod.
 5. Check the `$HOME/AzureResourceInventory/subscriptions.txt` file for the formatted subscription list.
