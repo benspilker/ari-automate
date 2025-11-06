@@ -84,7 +84,7 @@ foreach ($sub in $subsToLookup) {
 }
 $arrayLines += ')'
 $arrayLines += ""
-$arrayLines += "Invoke-ARI -SubscriptionID \$ids -IncludeTags"
+$arrayLines += 'Invoke-ARI -SubscriptionID $ids -IncludeTags'
 
 $subsFile = Join-Path $ariFolder "subscriptions.txt"
 $arrayLines | Out-File -FilePath $subsFile -Encoding utf8
