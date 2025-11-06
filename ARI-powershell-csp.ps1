@@ -1,5 +1,5 @@
 cls
-Write-Host "Installing AzureResourceInventory Powershell Module"
+Write-Host "Installing AzureResourceInventory PowerShell Module"
 Install-Module -Name AzureResourceInventory -Force
 Import-Module AzureResourceInventory
 
@@ -17,15 +17,22 @@ $ids = $subs | ForEach-Object { $_.ID }
 
 # Build subscriptions.txt content
 $arrayLines = @()
+$arrayLines += "Install-Module -Name AzureResourceInventory"
+$arrayLines += "Import-Module AzureResourceInventory"
+$arrayLines += ""
 $arrayLines += '$ids = @('
+
 foreach ($sub in $subs) {
-    # Each line: 'ID' # Name
     $arrayLines += "    '$($sub.ID)' # $($sub.Name)"
 }
+
 $arrayLines += ')'
+$arrayLines += ""
+$arrayLines += "Invoke-ARI -SubscriptionID \$ids -IncludeTags"
 
 $outFile = Join-Path $ariFolder "subscriptions.txt"
 $arrayLines | Out-File -FilePath $outFile -Encoding utf8
+
 Write-Host ""
 Write-Host "Subscription list saved to: $outFile" -ForegroundColor Green
 Write-Host ""
