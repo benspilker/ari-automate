@@ -27,16 +27,11 @@ This is normal. The excel file won't have perfect formatting and auto-fitting be
 
 1. Open **Azure Cloud Shell** in your tenant.
 2. Copy the script into the shell or run the git clone command in Quick Start.
-3. There are 2 versions of the script to run. The simplified version is ARI-powershell-csp.ps1 and the more advanced version is ARI-powershell-csp-prod-nonprod.ps1.
+3. 
     ```powershell
-    .\ARI-powershell-csp.ps1
+    .\ARI-powershell.ps1
     ```
-	or
-    ```powershell
-    .\ARI-powershell-csp-prod-nonprod.ps1
-    ```	
-4. Note, the script can only query up to 8 subscriptions at a time, otherwise Invoke-ARI crashes in the cloud shell. ARI-powershell-csp.ps1 will only query the first 8 subcriptions listed. 
-For larger customers who have more than 8 subscriptions, consider using ARI-powershell-csp-prod-nonprod.ps1 which currently filters out non-prod subcriptions and only queries prod.
+4. Note, if All subscriptions are selected, the script can only query up to 8 subscriptions at a time, otherwise Invoke-ARI crashes in the cloud shell. ARI-powershell.ps1 will only query the first 8 subcriptions listed. 
 5. Check the `$HOME/AzureResourceInventory/subscriptions.txt` file for the formatted subscription list.
 6. Inventory data will be collected automatically via `Invoke-ARI`.
 7. Download files from cloud shell to your local computer. Manage Files, Download a File, Enter the path.
