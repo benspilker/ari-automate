@@ -106,7 +106,7 @@ $idsToUse = $subsToLookup.ID
 
 # Run Azure Resource Inventory
 Write-Host "Running Azure Resource Inventory..." -ForegroundColor Cyan
-Invoke-ARI -SubscriptionID $idsToUse -IncludeTags
+Invoke-ARI -SubscriptionID $idsToUse -Lite
 
 # Summary output
 Write-Host "`nSubscription list saved to: $subsFile" -ForegroundColor Green

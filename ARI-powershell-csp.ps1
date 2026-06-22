@@ -56,4 +56,4 @@ if ($ids.Count -gt 8) {
 }
 
 Write-Host "Running Azure Resource Inventory..." -ForegroundColor Cyan
-Invoke-ARI -SubscriptionID $idsToUse -IncludeTags
+Invoke-ARI -SubscriptionID $idsToUse -Lite
